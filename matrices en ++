@@ -1,1 +1,48 @@
-# datos-y-algoritmos-c-
+#include<stdio.h>
+#define SizeMax 10
+
+int main (){
+		//declarar variables
+		int N, i, j ,K ;
+		int m1[SizeMax][SizeMax], m2[SizeMax][SizeMax], mr[SizeMax][SizeMax];
+		//leer matrices
+		
+		printf("insertar tamaño de matrices: ");
+		scanf("%d", "&N");
+		printf("\n");
+		
+		for (i=0; i<N; i++){//i itera sobre las filas 
+			for(j=0; j<N; j++){//j itera sobre las columnes 
+			printf("m1[%d][%d]=",i,j);
+			scanf("%d,&m1[i][j]");
+			printf("\n");
+			}
+		}
+		for (i=0; i<N; i++){//i itera sobre las filas 
+			for(j=0; j<N; j++){//j itera sobre las columnes 
+			printf("m2[%d][%d]=",i,j);
+			scanf("%d,&m2[i][j]");
+			printf("\n");
+			}
+		}
+		//multiplicar matrices
+		int sum;
+		for (i=0; i<N; i++){//i itera sobre las filas
+			for (j=0; j<N;j++){//j itera las columnas
+			sum= 0;
+				for(k=0; k<N; k++)
+					sum = sum + m1[j][k]*m2[k][j];
+			mr[i][j] = sum;
+			}
+		}
+		
+		
+		//imprimer resultado 
+		for(i=0; i<N; i++){//i itera sobre las filas 
+			for( j=0; j<N; j++){//j itera sobre las columnas 
+				printf("[%d]",mr[i][j]);
+				
+			}
+			printf("\n");
+		}
+}
