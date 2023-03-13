@@ -1,0 +1,51 @@
+#include<stdio.h>
+
+
+void seleccion(int* lista, int largo){
+	int i, j;
+	int minimo;
+	int posicion;
+	int primero;
+	
+	for (i = 0; i < largo-1; i++){
+		primero = lista[i];
+		minimo = primero;
+		posicion = i;
+		
+		for (j = i+1; j < largo;j++){
+			if (lista[j] < minimo){
+				minimo = lista[j];
+				posicion = j; 
+			}
+		}
+		lista[i] = minimo;
+		lista[posicion] = primero;
+	}
+}
+
+
+int main(){
+	int i;
+	int lista[5] = {2, 6, 1, 7, 3};
+
+	printf("antes {");
+	for (i = 0; i < 5; i++){
+		if (i < 4)
+			printf("%d,",lista[i]);
+		else
+			printf("%d",lista[i]);
+
+	}
+	printf("}\n");
+
+	seleccion(lista,5);
+	
+	printf("despues {");
+	for (i = 0; i < 5; i++){
+		if (i < 4)
+			printf("%d,",lista[i]);
+		else
+			printf("%d",lista[i]);
+	}
+	printf("}");
+}
