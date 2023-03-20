@@ -1,0 +1,94 @@
+#include<stdio.h>
+
+int operaciones = 0;
+#define MAXLARGO 50
+
+
+void seleccion(int* lista, int largo){
+	int i, j;
+	int minimo;
+	int posicion;
+	int primero;
+
+	for (i = 0; i < largo-1; i++){
+		primero = lista[i];
+		minimo = primero;
+		posicion = i;
+		
+		for (j = i+1; j < largo;j++){
+			operaciones++;
+			if (lista[j] < minimo){
+				minimo = lista[j];
+				posicion = j; 
+			}
+		}
+		lista[i] = minimo;
+		lista[posicion] = primero;
+	}
+}
+
+void burbuja(int* lista, int largo){
+	int i, j, valor;
+
+	for (i = 0; i < largo; i++){
+		for (j = 0; j < largo - 1; j++){
+			operaciones++;			
+			if (lista[j] > lista[j+1]){
+				valor = lista[j];
+				lista[j] = lista[j+1];
+				lista[j+1] = valor;
+			}
+		}
+	}
+}
+
+
+void insercion(int* lista, int largo){
+	int i, j, actual;
+
+	for (i = 1; i < largo; i++){
+		
+		actual = lista[i];
+		
+		for (j = i-1 ; j >= 0; j--){
+			operaciones++;			
+			if (lista[j] < actual)
+				break;
+			else
+				lista[j+1] = lista[j];
+		}
+		lista[j+1] = actual;
+	}
+}
+
+
+
+int main(){
+	int i;
+	int largo = 11;
+	int lista[MAXLARGO] = {1, 22, 3, 7, 6, 23, 5, 0, 4, 24,33};
+
+	printf("antes {");
+	for (i = 0; i < largo; i++){
+		if (i < largo -1)
+			printf("%d,",lista[i]);
+		else
+			printf("%d",lista[i]);
+
+	}
+	printf("}\n");
+
+	//seleccion(lista,largo);
+	//burbuja(lista,largo);
+	//insercion(lista,largo);
+	
+	printf("vector ordenado {");
+	for (i = 0; i < largo; i++){
+		if (i < largo - 1 )
+			printf("%d,",lista[i]);
+		else
+			printf("%d",lista[i]);
+	}
+	printf("}");
+	printf(" en %d operaciones\n",operaciones);
+}
