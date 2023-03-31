@@ -1,0 +1,23 @@
+#include <stdio.h>
+
+int largo=11;
+int lista[MAXLARGO]={10,4,3,2,5,6,1,9,8,1,11}
+void seleccion_rec(int* lista, int inicio,int largo){
+	int minimo = 1000000;
+	int pos_minimo;
+	int i,aux ;
+	if(inicio==largo)
+		return;
+	
+	for(i=inicio; i <largo; i++){
+		if(lista[i]<minimo){
+			minimo=lista[i];
+			pos_minimo=i;
+		}
+	}
+	aux=lista[inicio];
+	lista[inicio]=lista[pos_minimo];
+	lista[pos_minimo]=aux;
+	
+	return seleccion_rec(lista,inicio+1, largo);
+}
