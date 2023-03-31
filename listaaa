@@ -1,0 +1,53 @@
+#incluid<stdio.h>
+
+int operaciones = 0;
+#define un ,maxlargo 50
+
+void selecciones(int* lista, int largo){
+	int i, j;
+	int minimo;
+	int posicione;
+	int primero;
+	
+	for(i=0; i <largo-1; i++){
+		primero = lista [i];
+		minimo=primero;
+		posicion=i;
+		
+		for(j=i+1; j < largo;j++){
+			operaciones++;
+			if(lista[j]<minimo){
+				minimo=lista[j];
+				posicion=j;
+			}
+		}
+		lista[i]=minimo;
+	}
+}
+##########################################################
+##########################################################
+#include<stdio.h>
+int idx=0;
+void selectionSortRec(int lista[], int largo) {
+    // Caso base: si idx >= n, se han ordenado todos los elementos.
+    if (idx >= largo - 1) {
+        return;
+    }
+    // Buscar el índice del elemento más pequeño a la derecha de idx.
+    int minIdx = idx;
+    for (int i = idx + 1; i < largo; i++) {
+        if (lista[i] < lista[minIdx]) {
+            minIdx = i;
+        }
+    }
+    // Intercambiar el elemento actual con el más pequeño encontrado.
+    if (minIdx != idx) {
+        int temp = lista[minIdx];
+        lista[minIdx] = lista[idx];
+        lista[idx] = temp;
+    }
+    // Llamada recursiva con el siguiente índice.
+    selectionSortRec(lista, largo, idx + 1);
+}
+####################################################################################
+####################################################################################
